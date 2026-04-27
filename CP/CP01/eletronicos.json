@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "nome": "Mouse Gamer",
+        "preco": 89,
+        "estoque": 20,
+        "marca": "Logitech",
+        "fornecedor": "TechDistrib",
+        "componente": "eletronico",
+        "carregavel": false,
+        "descricao": "Mouse Gamer com alta precisão e design ergonômico, ideal para jogos."
+    },
+    {
+        "id": 2,
+        "nome": "Teclado Mecânico",
+        "preco": 249,
+        "estoque": 2,
+        "marca": "Redragon",
+        "fornecedor": "TechDistrib",
+        "componente": "eletronico",
+        "carregavel": false,
+        "descricao": "Teclado mecânico com teclas retroiluminadas e resposta rápida para gamers."
+    },
+    {
+        "id": 3,
+        "nome": "Headset Gamer",
+        "preco": 200.0,
+        "estoque": 18,
+        "marca": "HyperX",
+        "fornecedor": "AudioSupply",
+        "componente": "eletronico",
+        "carregavel": false,
+        "descricao": "Headset com som estéreo de alta qualidade e microfone ajustável."
+    },
+    {
+        "id": 4,
+        "nome": "Caixa de Som Bluetooth",
+        "preco": 159,
+        "estoque": 30,
+        "marca": "JBL",
+        "fornecedor": "SoundMaster",
+        "componente": "eletronico",
+        "carregavel": true,
+        "descricao": "Caixa de som portátil com Bluetooth, som potente e bateria recarregável."
+    },
+    {
+        "id": 5,
+        "nome": "Smartwatch",
+        "preco": 399,
+        "estoque": 12,
+        "marca": "Xiaomi",
+        "fornecedor": "MobileTech",
+        "componente": "eletronico",
+        "carregavel": true,
+        "descricao": "Smartwatch com monitoramento de atividades físicas, notificações e bateria duradoura."
+    },
+    {
+        "id": 6,
+        "nome": "Power Bank 10000mAh",
+        "preco": 129,
+        "estoque": 40,
+        "marca": "Anker",
+        "fornecedor": "EnergyPlus",
+        "componente": "bateria",
+        "carregavel": true,
+        "descricao": "Power Bank portátil com 10000mAh, recarga rápida e compatível com diversos dispositivos."
+    },
+    {
+        "id": 7,
+        "nome": "Controle Sem Fio",
+        "preco": 179,
+        "estoque": 20,
+        "marca": "Sony",
+        "fornecedor": "GameStore",
+        "componente": "eletronico",
+        "carregavel": true,
+        "descricao": "Controle sem fio com alta precisão e conforto para longas sessões de jogo."
+    },
+    {
+        "id": 8,
+        "nome": "Webcam HD",
+        "preco": 139,
+        "estoque": 22,
+        "marca": "Logitech",
+        "fornecedor": "TechDistrib",
+        "componente": "eletronico",
+        "carregavel": false,
+        "descricao": "Webcam HD para chamadas e gravações com imagem nítida e microfone integrado."
+    },
+    {
+        "id": 9,
+        "nome": "Luminária LED",
+        "preco": 79,
+        "estoque": 35,
+        "marca": "Philips",
+        "fornecedor": "CasaLuz",
+        "componente": "iluminacao",
+        "carregavel": false,
+        "descricao": "Luminária LED eficiente, com design moderno e luz ajustável para ambientes de estudo e trabalho."
+    },
+    {
+        "id": 10,
+        "nome": "Fone Bluetooth",
+        "preco": 149,
+        "estoque": 27,
+        "marca": "Samsung",
+        "fornecedor": "AudioSupply",
+        "componente": "eletronico",
+        "carregavel": true,
+        "descricao": "Fone de ouvido Bluetooth com som de alta qualidade e bateria duradoura."
+    }
+]

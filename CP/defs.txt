@@ -1,0 +1,65 @@
+def forma_de_pagamento(valor_compra):
+    print("Formas de pagamento disponíveis:")
+    print("1. Cartão de crédito")
+    print("2. Débito")
+    print("3. Pix")
+
+    escolha = input("Escolha a forma de pagamento (1, 2 ou 3): ")
+
+    if escolha == "1":
+        while True:
+            try:
+                parcelas = int(input("Quantas parcelas? (1 a 3 sem juros / até 12 com juros): "))
+
+                if 1 <= parcelas <= 3:
+                    total = valor_compra
+                    valor_parcela = total / parcelas
+
+                    print(f"Total: R${total:.2f}")
+                    print(f"{parcelas}x de R${valor_parcela:.2f} sem juros")
+
+                    return f"Cartão de crédito {parcelas}x sem juros"
+
+                elif 4 <= parcelas <= 12:
+                    #conta de juros compostos: M=P×(1+i)°n
+                    juros = 0.05
+                    total = valor_compra * (1 + juros) ** parcelas
+                    valor_parcela = total / parcelas
+
+                    print(f"Total com juros: R${total:.2f}")
+                    print(f"{parcelas}x de R${valor_parcela:.2f}")
+
+                    return f"Cartão de crédito {parcelas}x com juros"
+
+                else:
+                    print("Digite um número entre 1 e 12.")
+
+            except ValueError:
+                print("Digite apenas números.")
+
+    elif escolha == "2":
+        print(f"Pagamento no débito: R${valor_compra:.2f}")
+        return "Débito"
+
+    elif escolha == "3":
+        print(f"Pagamento no Pix: R${valor_compra:.2f}")
+        return "Pix"
+
+    else:
+        print("Opção inválida.")
+        return "Desconhecida"
+
+def cadastro():
+    while True:
+        try:
+            cliente = Cliente(
+                id=int(input("ID: ")),
+                nome=input("Nome: "),
+                cpf=int(input("CPF: ")),
+                telefone=int(input("Telefone: ")),
+                cep=int(input("CEP: ")),
+            )
+            return cliente
+
+        except ValueError:
+            print("Erro: Por favor, insira valores válidos.")
