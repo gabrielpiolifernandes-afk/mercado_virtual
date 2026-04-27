@@ -1,5 +1,5 @@
 import json
-from Cadastro_de_produtos import ProdutoEletronico
+from mercado_virtual.CP01.Cadastro_de_produtos import ProdutoEletronico
 
 arquivo = "eletronicos.json"
 
