@@ -3,7 +3,7 @@
         "id": 1,
         "nome": "Mouse Gamer",
         "preco": 89,
-        "estoque": 20,
+        "estoque": 16,
         "marca": "Logitech",
         "fornecedor": "TechDistrib",
         "componente": "eletronico",
@@ -108,5 +108,16 @@
         "componente": "eletronico",
         "carregavel": true,
         "descricao": "Fone de ouvido Bluetooth com som de alta qualidade e bateria duradoura."
+    },
+    {
+        "id": 11,
+        "nome": "oi",
+        "preco": 40.0,
+        "estoque": 10,
+        "marca": "aquela la",
+        "fornecedor": "aqiele al",
+        "componente": "é",
+        "carregavel": false,
+        "descricao": "por metro o valor"
     }
 ]
