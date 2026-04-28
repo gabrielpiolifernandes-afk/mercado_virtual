@@ -1,0 +1,137 @@
+#hasattr ele é usado para criar uma nova metrica caso ela não exita
+#ou seja aquilo que é criado não pela empresa mas sim pelo cliente
+#e de extrema importacia nos negocios para entender o comportamento do cliente e melhorar a experiência de compra
+
+    #def vendas(self, id):
+        produto = self.adicionar_no_carrinho(id)
+
+        #if not produto:
+            #return "Produto não disponível para venda."
+
+        # remove do carrinho (já virou venda)
+        #self.carrinho.remove(produto)
+
+        # baixa estoque
+        #dados = self.leitura()
+
+        #for p in dados:
+           # if p.get('id') == id:
+               # p['estoque'] -= 1
+               # break
+
+        #self.salvar_dados(dados)
+
+        # inicializa métricas se não existir
+        #if not hasattr(self, "metricas_vendas"):
+           # self.metricas_vendas = {} #aqui guarda o id do produto e a quantidade de vendas
+
+       # produto_id = produto.get('id')#verificação
+
+        #self.metricas_vendas[produto_id] = self.metricas_vendas.get(produto_id, 0) + 1 #aqui tem a atualização na pratica
+
+        #return f"Venda realizada: {produto.get('nome')}"#aqui um print para o cliente saber que a venda foi realizada
+
+        /////////////////////
+    
+    
+    def buscar_descricao(self, id):
+       # dados = self.leitura()
+
+        #if not dados:
+           # return "Nenhum dado disponível."
+
+        #for produto in dados:
+           # if produto.get('id') == id:
+                #nome = produto.get('nome', 'Sem nome')
+               # descricao = produto.get('descricao', 'Sem descrição')
+               # return f"Produto: {nome} | Descrição: {descricao}"
+
+       # return "Produto não encontrado."
+
+
+
+
+
+
+
+       # ID
+    while True:
+        try:
+            id = int(input("ID: "))
+            ids_existentes = [c['id'] for c in dados]
+
+            if id in ids_existentes:
+                print("ID já cadastrado! Digite outro.")
+            else:
+                break
+        except ValueError:
+            print("Digite um número válido.")
+
+    # Nome
+    while True:
+        nome = input("Nome: ").strip()
+        if nome:
+            break
+        print("Nome não pode ser vazio.")
+
+    # Preço
+    while True:
+        try:
+            preco = float(input("Preço: "))
+            if preco >= 0:
+                break
+            else:
+                print("Preço não pode ser negativo.")
+        except ValueError:
+            print("Digite um número válido.")
+
+    # Estoque
+    while True:
+        try:
+            estoque = int(input("Estoque: "))
+            if estoque >= 0:
+                break
+            else:
+                print("Estoque não pode ser negativo.")
+        except ValueError:
+            print("Digite um número inteiro válido.")
+
+    # Marca
+    while True:
+        marca = input("Marca: ").strip()
+        if marca:
+            break
+        print("Marca não pode ser vazia.")
+
+    # Fornecedor
+    while True:
+        fornecedor = input("Fornecedor: ").strip()
+        if fornecedor:
+            break
+        print("Fornecedor não pode ser vazio.")
+
+    # Componente
+    while True:
+        componente = input("Componente: ").strip()
+        if componente:
+            break
+        print("Componente não pode ser vazio.")
+
+    # Carregável
+    while True:
+        entrada = input("Carregável (S/N): ").strip().upper()
+        if entrada == "S":
+            carregavel = True
+            break
+        elif entrada == "N":
+            carregavel = False
+            break
+        else:
+            print("Digite apenas S ou N.")
+
+    # Descrição
+    while True:
+        descricao = input("Descrição: ").strip()
+        if descricao:
+            break
+        print("Descrição não pode ser vazia.")

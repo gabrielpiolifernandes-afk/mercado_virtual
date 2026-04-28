@@ -1,11 +1,9 @@
-import json
-from mercado_virtual.CP01.Cadastro_de_produtos import ProdutoEletronico
+from Cadastro_de_produtos import ProdutoEletronico
 
 arquivo = "eletronicos.json"
 
 # cria um objeto para usar os métodos
 produto_obj = ProdutoEletronico(0, "", 0, 0, "", "", "", False, "")
-
 
 def adicionar_produto():
     dados = produto_obj.leitura()
@@ -109,24 +107,6 @@ def adicionar_produto():
 
     print("Produto adicionado com sucesso!")
 
-    novo_produto = {
-        "id": id,
-        "nome": nome,
-        "preco": preco,
-        "estoque": estoque,
-        "marca": marca,
-        "fornecedor": fornecedor,
-        "componente": componente,
-        "carregavel": carregavel,
-        "descricao": descricao
-    }
-
-    dados.append(novo_produto)
-    produto_obj.salvar_dados(dados)
-
-    print("Produto adicionado com sucesso!")
-
-
 def remover_produto():
     dados = produto_obj.leitura()
 
@@ -144,7 +124,6 @@ def remover_produto():
     else:
         print("Cancelado.")
 
-
 def alerta():
     dados = produto_obj.leitura()
     estoque_baixo = False
@@ -157,6 +136,18 @@ def alerta():
     if not estoque_baixo:
         print("🟢 Estoque ok")
 
+def confirmar_alteracao(produto, campo, novo_valor, label):
+    print(f"\n{label}")
+    print(f"Atual: {produto[campo]}")
+    print(f"Novo : {novo_valor}")
+
+    confirmacao = input("Confirmar alteração? (S/N): ").strip().upper()
+
+    if confirmacao == "S":
+        produto[campo] = novo_valor
+        print(f"{label} atualizado!")
+    else:
+        print("Alteração cancelada.")
 
 def atualizar_produto():
     dados = produto_obj.leitura()
@@ -175,28 +166,28 @@ def atualizar_produto():
                 opcao = input("Opção: ")
 
                 if opcao == "1":
-                    produto["nome"] = input("Novo nome: ")
+                    confirmar_alteracao(produto, "nome", input("Novo nome: "), "Nome")
 
                 elif opcao == "2":
-                    produto["preco"] = float(input("Novo preço: "))
+                    confirmar_alteracao(produto, "preco", float(input("Novo preço: ")), "Preço")
 
                 elif opcao == "3":
-                    produto["estoque"] = int(input("Novo estoque: "))
+                    confirmar_alteracao(produto, "estoque", int(input("Novo estoque: ")), "Estoque")
 
                 elif opcao == "4":
-                    produto["marca"] = input("Nova marca: ")
+                    confirmar_alteracao(produto, "marca", input("Nova marca: "), "Marca")
 
                 elif opcao == "5":
-                    produto["fornecedor"] = input("Novo fornecedor: ")
+                    confirmar_alteracao(produto, "fornecedor", input("Novo fornecedor: "), "Fornecedor")
 
                 elif opcao == "6":
-                    produto["componente"] = input("Novo componente: ")
+                    confirmar_alteracao(produto, "componente", input("Novo componente: "), "Componente")
 
                 elif opcao == "7":
-                    produto["carregavel"] = input("True/False: ") == "True"
+                    confirmar_alteracao(produto, "carregavel", input("True/False: ") == "True", "Carregável")
 
                 elif opcao == "8":
-                    produto["descricao"] = input("Nova descrição: ")
+                    confirmar_alteracao(produto, "descricao", input("Nova descrição: "), "Descrição")
 
                 elif opcao == "9":
                     produto_obj.salvar_dados(dados)
@@ -205,10 +196,7 @@ def atualizar_produto():
 
                 else:
                     print("Opção inválida!")
-
-    print("Produto não encontrado.")
-
-
+        
 # MENU
 while True:
     print("\n===== SISTEMA =====")

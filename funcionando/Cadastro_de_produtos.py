@@ -2,6 +2,7 @@ import json
 
 arquivo = "eletronicos.json"
 
+
 class Produtos:
     def __init__(self, id, nome, preco, estoque, marca, fornecedor):
         self.id = id
@@ -16,6 +17,7 @@ class ProdutoEletronico(Produtos):
 
     def __init__(self, id, nome, preco, estoque, marca, fornecedor, componente, carregavel, descricao):
         super().__init__(id, nome, preco, estoque, marca, fornecedor)
+
         self.componente = componente
         self.carregavel = carregavel
         self.descricao = descricao
@@ -33,6 +35,7 @@ class ProdutoEletronico(Produtos):
 
     def listar_produtos(self):
         dados = self.leitura()
+
         print("\nLISTA DE PRODUTOS\n")
 
         for produto in dados:
@@ -40,38 +43,20 @@ class ProdutoEletronico(Produtos):
             if produto['estoque'] < 5:
                 alerta_estoque = "⚠ Últimas peças!"
 
-            print(f"ID: {produto['id']} | Nome: {produto['nome']} | Preço: {produto['preco']} {alerta_estoque}")
+            print(
+                f"ID: {produto['id']} | "
+                f"Nome: {produto['nome']} | "
+                f"Preço: {produto['preco']} | "
+                f"Estoque: {produto['estoque']} {alerta_estoque}"
+            )
 
-    def buscar_descricao(self, id):
+    def buscar_produto(self, id):
         dados = self.leitura()
 
-        for produto in dados:
-            if produto['id'] == id:
-                nome = produto['nome']
-                descricao = produto.get('descricao', 'Sem descrição')
-                return f"Produto: {nome} | Descrição: {descricao}"
+        for p in dados:
+            if p['id'] == id:
+                return p
 
-        return "Produto não encontrado."
-
-    def carrinho_de_compra(self, id):
-        dados = self.leitura()
-
-        for produto in dados:
-            if produto['id'] == id:
-                if produto['estoque'] > 0:
-                    produto['estoque'] -= 1
-                    self.salvar_dados(dados)
-                    return "Compra realizada!"
-                else:
-                    return "Produto esgotado."
-
-        return "Produto não encontrado."
-
-
-# Criando objeto para usar os métodos
-produto = ProdutoEletronico(0, "", 0, 0, "", "", "", False, "")
-
-# Exemplos de uso
-produto.listar_produtos()
-print(produto.buscar_descricao(1))
-print(produto.carrinho_de_compra(1))
+        return None
+    
+    

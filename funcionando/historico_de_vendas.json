@@ -1,0 +1,116 @@
+[
+    {
+        "id_venda": 1,
+        "itens": [
+            {
+                "id_produto": 1,
+                "nome": "Mouse Gamer",
+                "preco": 200.0,
+                "quantidade": 1
+            }
+        ],
+        "desconto": 10,
+        "cupom": "katatal10",
+        "pagamento": "Pix",
+        "total": 180.0,
+        "data": "2026-04-28T10:15:00"
+    },
+    {
+        "id_venda": 2,
+        "itens": [
+            {
+                "id_produto": 2,
+                "nome": "Teclado Mecânico",
+                "preco": 300.0,
+                "quantidade": 1
+            },
+            {
+                "id_produto": 3,
+                "nome": "Headset Gamer",
+                "preco": 200.0,
+                "quantidade": 1
+            }
+        ],
+        "desconto": 0,
+        "cupom": null,
+        "pagamento": "Cartão",
+        "total": 500.0,
+        "data": "2026-04-28T11:00:00"
+    },
+    {
+        "id_venda": 3,
+        "itens": [
+            {
+                "id_produto": 5,
+                "nome": "Smartwatch",
+                "preco": 399.0,
+                "quantidade": 1
+            }
+        ],
+        "desconto": 10,
+        "cupom": "katatal10",
+        "pagamento": "Pix",
+        "total": 359.1,
+        "data": "2026-04-28T12:30:00"
+    },
+    {
+        "id_venda": 4,
+        "itens": [
+            {
+                "id_produto": 6,
+                "nome": "Power Bank 10000mAh",
+                "preco": 129.0,
+                "quantidade": 2
+            }
+        ],
+        "desconto": 0,
+        "cupom": null,
+        "pagamento": "Dinheiro",
+        "total": 258.0,
+        "data": "2026-04-28T13:10:00"
+    },
+    {
+        "id_venda": 5,
+        "itens": [
+            {
+                "id_produto": 10,
+                "nome": "Fone Bluetooth",
+                "preco": 149.0,
+                "quantidade": 1
+            },
+            {
+                "id_produto": 8,
+                "nome": "Webcam HD",
+                "preco": 139.0,
+                "quantidade": 1
+            },
+            {
+                "id_produto": 9,
+                "nome": "Luminária LED",
+                "preco": 79.0,
+                "quantidade": 1
+            }
+        ],
+        "desconto": 10,
+        "cupom": "katatal10",
+        "pagamento": "Pix",
+        "total": 331.2,
+        "data": "2026-04-28T14:45:00"
+    },
+    {
+        "id_venda": 6,
+        "itens": [
+            {
+                "id_produto": 11,
+                "nome": "led",
+                "preco": 30.0,
+                "quantidade": 5
+            }
+        ],
+        "desconto": 0,
+        "cupom": null,
+        "pagamento": "Cartão",
+        "total": 150.0,
+        "data": "2026-04-28T15:20:00"
+    }
+]

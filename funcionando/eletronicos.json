@@ -2,8 +2,8 @@
     {
         "id": 1,
         "nome": "Mouse Gamer",
-        "preco": 89,
-        "estoque": 16,
+        "preco": 200.0,
+        "estoque": 10,
         "marca": "Logitech",
         "fornecedor": "TechDistrib",
         "componente": "eletronico",
@@ -13,8 +13,8 @@
     {
         "id": 2,
         "nome": "Teclado Mecânico",
-        "preco": 249,
-        "estoque": 2,
+        "preco": 300.0,
+        "estoque": 10,
         "marca": "Redragon",
         "fornecedor": "TechDistrib",
         "componente": "eletronico",
@@ -111,13 +111,13 @@
     },
     {
         "id": 11,
-        "nome": "oi",
-        "preco": 40.0,
-        "estoque": 10,
-        "marca": "aquela la",
-        "fornecedor": "aqiele al",
-        "componente": "é",
+        "nome": "led",
+        "preco": 30.0,
+        "estoque": 20,
+        "marca": "redDragon",
+        "fornecedor": "redDragon",
+        "componente": "eletrico",
         "carregavel": false,
-        "descricao": "por metro o valor"
+        "descricao": "30 reais por metro"
     }
 ]
