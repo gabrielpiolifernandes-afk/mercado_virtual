@@ -11,12 +11,8 @@
     },
     {
         "id": 3,
-        "codigo": "1",
-        "desconto": 5.0
-    },
-    {
-        "id": 4,
-        "codigo": "2",
-        "desconto": 5.0
+        "codigo": "teste_desativar100",
+        "desconto": 100.0,
+        "ativo": false
     }
 ]

@@ -5,7 +5,7 @@ from vendas import Vendas
 def main():
     produto_obj = ProdutoEletronico(0, "", 0, 0, "", "", "", False, "")
     carrinho_obj = Carrinho()
-    vendas_obj = Vendas()
+    vendas_obj = Vendas(produto_obj, carrinho_obj   )
 
     while True:
         print("\nMENU DE OPÇÕES")
@@ -33,7 +33,7 @@ def main():
             print(produto_obj.carrinho_de_compra(id))
         
         elif escolha == "5":
-            vendas_obj.relatorio(produto_obj.leitura())
+            vendas_obj.confirmar_compra()
         
         elif escolha == "6":
             print("Saindo do programa...")

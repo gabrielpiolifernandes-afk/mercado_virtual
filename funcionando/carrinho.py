@@ -9,8 +9,22 @@ class Carrinho:
         self.abandonos = []
         self.fechado = False
 
-    def adicionar(self, produto):
-        self.itens.append(produto)
+    def adicionar(self, produto, quantidade):
+        if quantidade <= 0:
+            return "Quantidade inválida"
+
+        for item in self.itens:
+            if item["id"] == produto["id"]:
+                item["quantidade"] += quantidade
+                return "Quantidade atualizada no carrinho"
+
+        self.itens.append({
+            "id": produto["id"],
+            "nome": produto["nome"],
+            "preco": produto["preco"],
+            "quantidade": quantidade
+        })
+
         return "Adicionado ao carrinho"
 
     def remover(self, produto):
