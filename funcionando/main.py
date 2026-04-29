@@ -9,35 +9,44 @@ def main():
 
     while True:
         print("\nMENU DE OPÇÕES")
-        print("1. Adicionar Produto")
-        print("2. Listar Produtos")
-        print("3. Buscar Descrição")
-        print("4. Carrinho de Compra")
-        print("5. Vendas")
-        print("6. Sair")
+        print("1. Listar Produtos")
+        print("2. Buscar Descrição")
+        print("3. Carrinho de Compra")
+        print("4. Vendas")
+        print("5. Sair")
 
         escolha = input("Escolha uma opção: ")
 
         if escolha == "1":
-            produto_obj.adicionar_produto()
-        
-        elif escolha == "2":
             produto_obj.listar_produtos()
-        
+
+        elif escolha == "2":
+            produto_id = int(input("Digite o ID do produto: "))
+            print(produto_obj.buscar_descricao(produto_id))
+
         elif escolha == "3":
-            id = int(input("Digite o ID do produto para buscar descrição: "))
-            print(produto_obj.buscar_descricao(id))
-        
+            try:
+                id = int(input("Digite o ID do produto: "))
+
+                produto = produto_obj.buscar_produto(id)
+
+                if produto:
+                    quantidade = int(input("Quantidade: "))
+                    print(carrinho_obj.adicionar(produto, quantidade))
+                else:
+                    print("Produto não encontrado")
+
+            except ValueError:
+                print("Entrada inválida")
+
         elif escolha == "4":
-            id = int(input("Digite o ID do produto para adicionar ao carrinho: "))
-            print(produto_obj.carrinho_de_compra(id))
-        
-        elif escolha == "5":
             vendas_obj.confirmar_compra()
-        
-        elif escolha == "6":
+
+        elif escolha == "5":
             print("Saindo do programa...")
             break
-        
+
         else:
             print("Opção inválida! Tente novamente.")
+
+main()

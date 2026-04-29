@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 
+arquivo_produto = "eletronicos.json"
 arquivo = "cupom.json"
 arquivo_vendas = "historico_de_vendas.json"
 
@@ -304,6 +305,20 @@ class Vendas:
         return "Compra realizada com sucesso!"
 
     # ---------------- RELATÓRIO ----------------
+    
+    def _mostrar_venda(self, venda):
+        print(f"\nVenda ID: {venda['id_venda']}")
+        print(f"Data: {venda['data']}")
+        print(f"Pagamento: {venda['pagamento']}")
+        print(f"Cupom: {venda['cupom']}")
+        print(f"Desconto: {venda['desconto']}%")
+
+        print("Itens:")
+        for item in venda["itens"]:
+            print(f" - {item['nome']} x{item['quantidade']} R$ {item['preco']}")
+
+        print(f"Total: R$ {venda['total']:.2f}")
+    
     def relatorio_vendas(self, arquivo="historico_de_vendas.json"):
         try:
             with open(arquivo, "r", encoding="utf-8") as f:
@@ -312,27 +327,45 @@ class Vendas:
             print("Nenhuma venda registrada")
             return
 
+        if not dados:
+            print("Nenhuma venda registrada")
+            return
+
         print("\n===== RELATÓRIO DE VENDAS =====")
+        print("1 - Ver venda por ID")
+        print("2 - Ver lista (10 por vez)")
 
-        total_geral = 0
+        opcao = input("Escolha: ")
 
-        for venda in dados:
-            print(f"\nVenda ID: {venda['id_venda']}")
-            print(f"Data: {venda['data']}")
-            print(f"Pagamento: {venda['pagamento']}")
-            print(f"Cupom: {venda['cupom']}")
-            print(f"Desconto: {venda['desconto']}%")
+        # 🔎 FILTRO POR ID
+        if opcao == "1":
+            try:
+                id_busca = int(input("Digite o ID da venda: "))
 
-            print("Itens:")
-            for item in venda["itens"]:
-                print(f" - {item['nome']} x{item['quantidade']} R$ {item['preco']}")
+                for venda in dados:
+                    if venda["id_venda"] == id_busca:
+                        self._mostrar_venda(venda)
+                        return
 
-            print(f"Total: R$ {venda['total']:.2f}")
+                print("Venda não encontrada.")
 
-            total_geral += venda["total"]
+            except ValueError:
+                print("ID inválido")
 
-        print("\n==============================")
-        print(f"FATURAMENTO TOTAL: R$ {total_geral:.2f}")
+        elif opcao == "2":
+            tamanho = 10
+            for i in range(0, len(dados), tamanho):
+                bloco = dados[i:i + tamanho]
+
+                print(f"\n===== VENDAS {i+1} até {i+len(bloco)} =====")
+
+                for venda in bloco:
+                    print(f"ID: {venda['id_venda']} | Total: R$ {venda['total']:.2f}")
+
+                input("\nPressione ENTER para ver mais...")
+
+        else:
+            print("Opção inválida")
     
     # ---------------- MENU ADMIN ----------------
     def menu_admin(self):
@@ -351,10 +384,10 @@ class Vendas:
                 self.adicionar_cupom()
 
             elif op == "2":
-                self.desativar_cupom()  # ✔ usa sua função correta
+                self.desativar_cupom()  
 
             elif op == "3":
-                self.listar_cupons()  # ✔ usa sua função correta
+                self.listar_cupons()  
 
             elif op == "4":
                 self.relatorio_vendas()

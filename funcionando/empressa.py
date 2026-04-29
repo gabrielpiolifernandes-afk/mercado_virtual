@@ -5,108 +5,6 @@ arquivo = "eletronicos.json"
 # cria um objeto para usar os métodos
 produto_obj = ProdutoEletronico(0, "", 0, 0, "", "", "", False, "")
 
-def adicionar_produto():
-    dados = produto_obj.leitura()
-
-    # ID
-    while True:
-        try:
-            id = int(input("ID: "))
-            ids_existentes = [c['id'] for c in dados]
-
-            if id in ids_existentes:
-                print("ID já cadastrado! Digite outro.")
-            else:
-                break
-        except ValueError:
-            print("Digite um número válido.")
-
-    # Nome
-    while True:
-        nome = input("Nome: ").strip()
-        if nome:
-            break
-        print("Nome não pode ser vazio.")
-
-    # Preço
-    while True:
-        try:
-            preco = float(input("Preço: "))
-            if preco >= 0:
-                break
-            else:
-                print("Preço não pode ser negativo.")
-        except ValueError:
-            print("Digite um número válido.")
-
-    # Estoque
-    while True:
-        try:
-            estoque = int(input("Estoque: "))
-            if estoque >= 0:
-                break
-            else:
-                print("Estoque não pode ser negativo.")
-        except ValueError:
-            print("Digite um número inteiro válido.")
-
-    # Marca
-    while True:
-        marca = input("Marca: ").strip()
-        if marca:
-            break
-        print("Marca não pode ser vazia.")
-
-    # Fornecedor
-    while True:
-        fornecedor = input("Fornecedor: ").strip()
-        if fornecedor:
-            break
-        print("Fornecedor não pode ser vazio.")
-
-    # Componente
-    while True:
-        componente = input("Componente: ").strip()
-        if componente:
-            break
-        print("Componente não pode ser vazio.")
-
-    # Carregável
-    while True:
-        entrada = input("Carregável (S/N): ").strip().upper()
-        if entrada == "S":
-            carregavel = True
-            break
-        elif entrada == "N":
-            carregavel = False
-            break
-        else:
-            print("Digite apenas S ou N.")
-
-    # Descrição
-    while True:
-        descricao = input("Descrição: ").strip()
-        if descricao:
-            break
-        print("Descrição não pode ser vazia.")
-
-    novo_produto = {
-        "id": id,
-        "nome": nome,
-        "preco": preco,
-        "estoque": estoque,
-        "marca": marca,
-        "fornecedor": fornecedor,
-        "componente": componente,
-        "carregavel": carregavel,
-        "descricao": descricao
-    }
-
-    dados.append(novo_produto)
-    produto_obj.salvar_dados(dados)
-
-    print("Produto adicionado com sucesso!")
-
 def remover_produto():
     dados = produto_obj.leitura()
 
@@ -198,32 +96,35 @@ def atualizar_produto():
                     print("Opção inválida!")
         
 # MENU
-while True:
-    print("\n===== SISTEMA =====")
-    print("1 - Listar")
-    print("2 - Adicionar")
-    print("3 - Remover")
-    print("4 - Atualizar")
-    print("5 - Sair")
+def menu_admin_empressa():
+    while True:
+        print("\n===== SISTEMA =====")
+        print("1 - Listar")
+        print("2 - Adicionar")
+        print("3 - Remover")
+        print("4 - Atualizar")
+        print("5 - Sair")
 
-    alerta()
+        alerta()
 
-    opcao = input("Escolha: ")
+        opcao = input("Escolha: ")
 
-    if opcao == "1":
-        produto_obj.listar_produtos()
+        if opcao == "1":
+            produto_obj.listar_produtos()
 
-    elif opcao == "2":
-        adicionar_produto()
+        elif opcao == "2":
+            produto_obj.adicionar_produto()
 
-    elif opcao == "3":
-        remover_produto()
+        elif opcao == "3":
+            remover_produto()
 
-    elif opcao == "4":
-        atualizar_produto()
+        elif opcao == "4":
+            atualizar_produto()
 
-    elif opcao == "5":
-        break
+        elif opcao == "5":
+            break
 
-    else:
-        print("Opção inválida!")
+        else:
+            print("Opção inválida!")
+
+menu_admin_empressa()

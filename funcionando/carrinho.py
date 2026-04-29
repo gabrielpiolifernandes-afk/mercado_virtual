@@ -27,10 +27,11 @@ class Carrinho:
 
         return "Adicionado ao carrinho"
 
-    def remover(self, produto):
-        if produto in self.itens:
-            self.itens.remove(produto)
-            return "Removido do carrinho"
+    def remover(self, id_produto):
+        for item in self.itens:
+            if item["id"] == id_produto:
+                self.itens.remove(item)
+                return "Removido do carrinho"
         return "Produto não encontrado"
 
     def finalizar(self, compra_realizada):

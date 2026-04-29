@@ -1,8 +1,6 @@
 import json
 
 arquivo = "eletronicos.json"
-
-
 class Produtos:
     def __init__(self, id, nome, preco, estoque, marca, fornecedor):
         self.id = id
@@ -59,4 +57,110 @@ class ProdutoEletronico(Produtos):
 
         return None
     
+    def adicionar_produto(self):
+        dados = self.leitura()
+
+        # ID
+        while True:
+            try:
+                id = int(input("ID: "))
+                ids_existentes = [c['id'] for c in dados]
+
+                if id in ids_existentes:
+                    print("ID já cadastrado! Digite outro.")
+                else:
+                    break
+            except ValueError:
+                print("Digite um número válido.")
+
+        # Nome
+        while True:
+            nome = input("Nome: ").strip()
+            if nome:
+                break
+            print("Nome não pode ser vazio.")
+
+        # Preço
+        while True:
+            try:
+                preco = float(input("Preço: "))
+                if preco >= 0:
+                    break
+                else:
+                    print("Preço não pode ser negativo.")
+            except ValueError:
+                print("Digite um número válido.")
+
+        # Estoque
+        while True:
+            try:
+                estoque = int(input("Estoque: "))
+                if estoque >= 0:
+                    break
+                else:
+                    print("Estoque não pode ser negativo.")
+            except ValueError:
+                print("Digite um número inteiro válido.")
+
+        # Marca
+        while True:
+            marca = input("Marca: ").strip()
+            if marca:
+                break
+            print("Marca não pode ser vazia.")
+
+        # Fornecedor
+        while True:
+            fornecedor = input("Fornecedor: ").strip()
+            if fornecedor:
+                break
+            print("Fornecedor não pode ser vazio.")
+
+        # Componente
+        while True:
+            componente = input("Componente: ").strip()
+            if componente:
+                break
+            print("Componente não pode ser vazio.")
+
+        # Carregável
+        while True:
+            entrada = input("Carregável (S/N): ").strip().upper()
+            if entrada == "S":
+                carregavel = True
+                break
+            elif entrada == "N":
+                carregavel = False
+                break
+            else:
+                print("Digite apenas S ou N.")
+
+        # Descrição
+        while True:
+            descricao = input("Descrição: ").strip()
+            if descricao:
+                break
+            print("Descrição não pode ser vazia.")
+
+        novo_produto = {
+            "id": id,
+            "nome": nome,
+            "preco": preco,
+            "estoque": estoque,
+            "marca": marca,
+            "fornecedor": fornecedor,
+            "componente": componente,
+            "carregavel": carregavel,
+            "descricao": descricao
+        }
+
+        dados.append(novo_produto)
+        self.salvar_dados(dados)
+
+        print("Produto adicionado com sucesso!")
     
+    def buscar_descricao(self, id):
+        produto = self.buscar_produto(id)
+        if produto:
+            return produto.get("descricao", "Sem descrição")
+        return "Produto não encontrado"

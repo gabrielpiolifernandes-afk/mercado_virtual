@@ -3,7 +3,7 @@
         "id": 1,
         "nome": "Mouse Gamer",
         "preco": 200.0,
-        "estoque": 10,
+        "estoque": 9,
         "marca": "Logitech",
         "fornecedor": "TechDistrib",
         "componente": "eletronico",
@@ -102,7 +102,7 @@
         "id": 10,
         "nome": "Fone Bluetooth",
         "preco": 149,
-        "estoque": 27,
+        "estoque": 26,
         "marca": "Samsung",
         "fornecedor": "AudioSupply",
         "componente": "eletronico",
@@ -119,5 +119,16 @@
         "componente": "eletrico",
         "carregavel": false,
         "descricao": "30 reais por metro"
+    },
+    {
+        "id": 100,
+        "nome": "sadas",
+        "preco": 3210.0,
+        "estoque": 1031,
+        "marca": "pdsa",
+        "fornecedor": "dask",
+        "componente": "da",
+        "carregavel": true,
+        "descricao": "dasdas"
     }
 ]
