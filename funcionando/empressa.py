@@ -1,6 +1,6 @@
 from Cadastro_de_produtos import ProdutoEletronico
 
-arquivo = "eletronicos.json"
+arquivo = "jsons/eletronicos.json"
 
 # cria um objeto para usar os métodos
 produto_obj = ProdutoEletronico(0, "", 0, 0, "", "", "", False, "")
@@ -129,7 +129,7 @@ def alerta():
     estoque_baixo = False
 
     for produto in dados:
-        if produto["estoque"] < 5:
+        if produto["estoque"] <= 5:
             print(f"⚠ {produto['nome']} com estoque baixo ({produto['estoque']})")
             estoque_baixo = True
 

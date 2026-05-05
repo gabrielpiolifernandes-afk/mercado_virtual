@@ -1,6 +1,7 @@
 from Cadastro_de_produtos import ProdutoEletronico
 from carrinho import Carrinho
 from vendas import Vendas
+from cupons import Cupons
 
 def main():
     produto_obj = ProdutoEletronico(0, "", 0, 0, "", "", "", False, "")

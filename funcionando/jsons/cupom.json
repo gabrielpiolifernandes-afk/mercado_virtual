@@ -2,7 +2,8 @@
     {
         "id": 1,
         "codigo": "katatal10",
-        "desconto": 10
+        "desconto": 10,
+        "ativo": true
     },
     {
         "id": 2,
@@ -13,6 +14,18 @@
         "id": 3,
         "codigo": "teste_desativar100",
         "desconto": 100.0,
+        "ativo": true
+    },
+    {
+        "id": 4,
+        "codigo": "oi20",
+        "desconto": 20.0,
         "ativo": false
+    },
+    {
+        "id": 5,
+        "codigo": "20",
+        "desconto": 20.0,
+        "ativo": true
     }
 ]

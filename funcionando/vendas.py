@@ -1,8 +1,9 @@
 import json
 from datetime import datetime
+from cupons import Cupons
 
-arquivo = "cupom.json"
-arquivo_vendas = "historico_de_vendas.json"
+arquivo = "jsons/cupom.json"
+arquivo_vendas = "jsons/historico_de_vendas.json"
 
 class Vendas:
 
@@ -34,141 +35,6 @@ class Vendas:
 
         self.produto_obj.salvar_dados(dados)
 
-    # ---------------- CUPONS ----------------
-    def ler_cupons(self, arquivo="cupom.json"):
-        try:
-            with open(arquivo, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except FileNotFoundError:
-            return []
-    
-    def adicionar_cupom(self):
-        cupons = self.ler_cupons()
-
-        while True:
-            codigo = input("Código do cupom: ").lower().strip()
-
-            existe = False
-            for c in cupons:
-                if c["codigo"] == codigo:
-                    print("Cupom já existe! Tente outro.")
-                    existe = True
-                    break
-
-            if not existe:
-                break
-
-        try:
-            desconto = float(input("Desconto (%): "))
-
-            if desconto <= 0 or desconto > 100:
-                print("Desconto inválido!")
-                return
-
-            novo_id = max([c["id"] for c in cupons], default=0) + 1
-
-            novo_cupom = {
-                "id": novo_id,
-                "codigo": codigo,  
-                "desconto": desconto,
-                "ativo": True
-            }
-
-            cupons.append(novo_cupom)
-            self.salvar_cupons(cupons)
-
-            print(f"Cupom criado: {codigo} → {desconto}%")
-
-        except ValueError:
-            print("Valor inválido")
-    
-    def solicitar_cupom(self):
-        resposta = input("Deseja usar um cupom? (S/N): ").upper().strip()
-
-        if resposta != "S":
-            return 0, None
-
-        cupom = input("Digite o cupom: ")
-        desconto = self.aplicar_cupom(cupom)
-
-        if desconto > 0:
-            return desconto, cupom.lower().strip()
-
-        return 0, None
-
-    def aplicar_cupom(self, cupom):
-        cupom = cupom.lower().strip()
-
-        cupons = self.ler_cupons()
-
-        for c in cupons:
-            if c["codigo"] == cupom:
-
-                if not c.get("ativo", True):
-                    print("Este cupom foi descontinuado.")
-                    return 0
-
-                print(f"Cupom aplicado: {c['desconto']}%")
-                return c["desconto"]
-
-        print("Cupom inválido")
-        return 0
-    
-    def salvar_cupons(self, cupons, arquivo="cupom.json"):
-        with open(arquivo, "w", encoding="utf-8") as f:
-            json.dump(cupons, f, indent=4, ensure_ascii=False)
-    
-    def desativar_cupom(self):
-        cupons = self.ler_cupons()
-
-        if not cupons:
-            print("Nenhum cupom cadastrado.")
-            return
-
-        try:
-            print("\n===== CUPONS =====")
-            for c in cupons:
-                status = "ATIVO" if c.get("ativo", True) else "DESATIVADO"
-                print(f"ID: {c['id']} | Código: {c['codigo']} | {c['desconto']}% | {status}")
-
-            id_cupom = int(input("\nDigite o ID do cupom para desativar: "))
-
-            for c in cupons:
-                if c["id"] == id_cupom:
-                    c["ativo"] = False
-                    self.salvar_cupons(cupons)
-                    print("Cupom desativado com sucesso!")
-                    return
-
-            print("Cupom não encontrado!")
-
-        except ValueError:
-            print("ID inválido!")
-    
-    def listar_cupons(self):
-        cupons = self.ler_cupons()
-
-        if not cupons:
-            print("Nenhum cupom cadastrado.")
-            return
-
-        print("\n===== CUPONS =====")
-        for c in cupons:
-            status = "ATIVO" if c.get("ativo", True) else "DESCONTINUADO"
-            print(f"ID: {c['id']} | Código: {c['codigo']} | {c['desconto']}% | {status}")
-
-    def validar_cupom(self, codigo):
-        cupons = self.ler_cupons()
-
-        for c in cupons:
-            if c["codigo"] == codigo:
-
-                if not c.get("ativo", True):
-                    return None, "descontinuado"
-
-                return c, "ok"
-
-        return None, "invalido"
     # ---------------- PAGAMENTO ----------------
     def escolher_pagamento(self):
         print("\nFormas de pagamento:")
@@ -211,7 +77,7 @@ class Vendas:
             self.metricas_venda[produto_id] = self.metricas_venda.get(produto_id, 0) + 1
 
     # ---------------- HISTÓRICO ----------------
-    def ler_historico_vendas(self, arquivo="historico_de_vendas.json"):
+    def ler_historico_vendas(self, arquivo="jsons/historico_de_vendas.json"):
         try:
             with open(arquivo, "r", encoding="utf-8") as f:
                 return json.load(f)
@@ -233,7 +99,7 @@ class Vendas:
 
         dados.append(venda)
 
-        with open("historico_de_vendas.json", "w", encoding="utf-8") as f:
+        with open("jsons/historico_de_vendas.json", "w", encoding="utf-8") as f:
             json.dump(dados, f, indent=4, ensure_ascii=False)
 
     # ---------------- COMPRA ----------------
@@ -304,7 +170,7 @@ class Vendas:
         return "Compra realizada com sucesso!"
 
     # ---------------- RELATÓRIO ----------------
-    def relatorio_vendas(self, arquivo="historico_de_vendas.json"):
+    def relatorio_vendas(self, arquivo="jsons/historico_de_vendas.json"):
         try:
             with open(arquivo, "r", encoding="utf-8") as f:
                 dados = json.load(f)
@@ -339,27 +205,15 @@ class Vendas:
 
         while True:
             print("\n===== PAINEL DE VENDAS =====")
-            print("1 - Criar cupom")
-            print("2 - Remover cupom")
-            print("3 - Listar cupons")
-            print("4 - Relatório de vendas")
-            print("5 - Sair")
+            print("1- Relatório de vendas")
+            print("2 - Sair")
 
             op = input("Escolha: ")
 
             if op == "1":
-                self.adicionar_cupom()
-
-            elif op == "2":
-                self.desativar_cupom()  # ✔ usa sua função correta
-
-            elif op == "3":
-                self.listar_cupons()  # ✔ usa sua função correta
-
-            elif op == "4":
                 self.relatorio_vendas()
 
-            elif op == "5":
+            elif op == "2":
                 break
 
             else:

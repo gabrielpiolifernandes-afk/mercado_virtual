@@ -1,6 +1,6 @@
 import json
 
-arquivo = "eletronicos.json"
+arquivo = "jsons/eletronicos.json"
 
 
 class Produtos:

@@ -3,7 +3,7 @@
         "id": 1,
         "nome": "Mouse Gamer",
         "preco": 200.0,
-        "estoque": 10,
+        "estoque": 5,
         "marca": "Logitech",
         "fornecedor": "TechDistrib",
         "componente": "eletronico",
@@ -119,5 +119,16 @@
         "componente": "eletrico",
         "carregavel": false,
         "descricao": "30 reais por metro"
+    },
+    {
+        "id": 12,
+        "nome": "leitor",
+        "preco": 1000.0,
+        "estoque": 10,
+        "marca": "fhilips",
+        "fornecedor": "pricilas",
+        "componente": "eletronico",
+        "carregavel": true,
+        "descricao": "le as coisas"
     }
 ]
