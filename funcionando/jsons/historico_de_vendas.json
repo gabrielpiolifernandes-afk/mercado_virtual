@@ -112,5 +112,37 @@
         "pagamento": "Cartão",
         "total": 150.0,
         "data": "2026-04-28T15:20:00"
+    },
+    {
+        "id_venda": 7,
+        "itens": [
+            {
+                "id": 10,
+                "nome": "Fone Bluetooth",
+                "preco": 149,
+                "quantidade": 500
+            }
+        ],
+        "desconto": 0,
+        "cupom": null,
+        "pagamento": "Cartão",
+        "total": 149.0,
+        "data": "2026-04-28T19:27:55.451236"
+    },
+    {
+        "id_venda": 8,
+        "itens": [
+            {
+                "id": 1,
+                "nome": "Mouse Gamer",
+                "preco": 200.0,
+                "quantidade": 1
+            }
+        ],
+        "desconto": 10,
+        "cupom": "katatal10",
+        "pagamento": "Pix",
+        "total": 180.0,
+        "data": "2026-04-28T19:53:53.729183"
     }
 ]
